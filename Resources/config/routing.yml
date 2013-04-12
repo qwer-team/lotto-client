@@ -1,0 +1,8 @@
+client_client:
+    resource: "@ClientBundle/Resources/config/routing/client.xml"
+    prefix:   /
+
+ClientBundle_currency:
+    resource: "@ClientBundle/Resources/config/routing/currency.xml"
+    prefix:   /currency
+
