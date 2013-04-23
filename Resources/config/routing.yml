@@ -5,4 +5,9 @@ client_client:
 ClientBundle_currency:
     resource: "@ClientBundle/Resources/config/routing/currency.xml"
     prefix:   /currency
+    
+ClientBundle_currency_lala:
+    resource: "@ClientBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
