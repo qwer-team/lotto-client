@@ -12,12 +12,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
+     *
+     * @var \JMS\Serializer\Serializer
+     */
+    private $serializer;
+    /**
      * @Route("/client")
      * @Template()
      */
     public function indexAction()
     {
-        $token = 0;
+        $url = "http://lotto/tokens/123.json";
+        $ch = curl_init($url);
+        $this->serializer = $this->get("jms_serializer");
+        $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
+        $info->setLogin("vassa");
+        $info->setPassword("123");
+        $data = $this->serializer->serialize($info, "json");
+        $request["data"] = $data;
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+        $responseRaw = curl_exec($ch);
+        $response = json_decode($responseRaw);
+        $token = $response->data->token;
         //$token = $this->getToken();
         return array('token' => $token);
     }

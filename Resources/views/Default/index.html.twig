@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block title %}
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 	<title>Document</title>
-    {% endblock %}
-    {% block css %}
-        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/jquery-ui-1.10.2.custom.css") }}" media="all">
-        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/imageflow.packed.css") }}">
-        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/jquery.selectbox.css") }}" media="all">
-        <link rel="stylesheet" href="{{ asset( "bundles/qwerlottofrontend/css/style.css") }}" media="all">
-    {% endblock %}
-    {% block javascript %}
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-1.9.1.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.packed.js") }}"></script>
-        <script src="{{ asset( "bundles/qwerlottofrontend/js/imageflow.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery-ui-1.10.2.custom.min.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/jquery.selectbox-0.2.js") }}"></script>
-	<script src="{{ asset( "bundles/qwerlottofrontend/js/script.js") }}"></script>
-     {% endblock %}
+                <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/jquery-ui-1.10.2.custom.css" media="all">
+        <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/imageflow.packed.css">
+        <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/jquery.selectbox.css" media="all">
+        <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/style.css" media="all">
+        	<script src="http://lotto/bundles/qwerlottofrontend/js/jquery-1.9.1.js"></script>
+	<script src="http://lotto/bundles/qwerlottofrontend/js/imageflow.packed.js"></script>
+        <script src="http://lotto/bundles/qwerlottofrontend/js/imageflow.js"></script>
+	<script src="http://lotto/bundles/qwerlottofrontend/js/jquery-ui-1.10.2.custom.min.js"></script>
+	<script src="http://lotto/bundles/qwerlottofrontend/js/jquery.selectbox-0.2.js"></script>
+	<script src="http://lotto/bundles/qwerlottofrontend/js/script.js"></script>
 </head>
 
 <body>
     
 	<div id="header">
-		<img src="{{ asset( "bundles/qwerlottofrontend/images/header.png") }}" alt="">
+            {{ token }}
+		<!--<img src="{#{ asset( "bundles/qwerlottofrontend/images/header.png") }#}" alt="">-->
 	</div>
-<iframe style="width: 100%; height: 100%; border: none;"src="http://lotto/hello/lotto/bundle"></iframe>
+<iframe style="width: 100%; height: 100%; border: none;"src="http://lotto/hello/lotto/bundle?token={{token}}"></iframe>
 </body>
 </html>
 
