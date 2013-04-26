@@ -22,7 +22,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $url = "http://lotto/tokens/123.json";
+        $url = "http://lotto/tokens/123/currencies/USD.json";
         $ch = curl_init($url);
         $this->serializer = $this->get("jms_serializer");
         $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
