@@ -15,6 +15,16 @@ class NotificationsController extends Controller
      */
     public function resultAction(Request $request)
     {
+        $data = json_decode($request->get('data'));
+        foreach($data->bets as $bet){
+            $id = $bet->externalId;
+            $user = $this->getUserById($id);
+            $newAmount = $user->getAmount() + $bet->summa2;
+            $user->setAmount($newAmount);
+        }
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
         return new Response($request->get("data"));
     }
 
@@ -24,8 +34,26 @@ class NotificationsController extends Controller
      */
     public function fundsAction(Request $request)
     {
-        $json = json_encode(array("result" => 'success'));
+        $id = $request->get('id');
+        $currency = $request->get('currency');
+        $amount = $request->get('amount');
+        
+        $user = $this->getUserById($id);
+        $result = $user->getAmount() >= $amount? 'success': 'fail';
+        $json = json_encode(array('result' => $result));
         return new Response($json);
+    }
+    
+    /**
+     * 
+     * @param integer $id
+     * @return \Qwer\LottoClientBundle\Entity\Client
+     */
+    private function getUserById($id){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("ClientBundle:Client");
+        $user = $repo->find($id);
+        return $user;
     }
     
     /**
@@ -34,7 +62,16 @@ class NotificationsController extends Controller
      */
     public function betsAction(Request $request)
     {
+        $data = json_decode($request->get('data'));
+        foreach($data->bets as $bet){
+            $id = $bet->externalId;
+            $user = $this->getUserById($id);
+            $newAmount = $user->getAmount() - $bet->summa1;
+            $user->setAmount($newAmount);
+        }
         
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
         $json = json_encode(array("result" => 'success'));
         return new Response($json);
     }

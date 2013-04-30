@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
-    <field name="amount" type="decimal" column="amount" nullable="true"/>
+    <field name="amount" type="decimal" column="amount" precision="4" nullable="true"/>
     <many-to-one target-entity="Currency" field="currency">
         <join-column name="currency_id" nullable="true"/>
     </many-to-one>

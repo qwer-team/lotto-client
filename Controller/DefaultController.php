@@ -17,15 +17,17 @@ class DefaultController extends Controller
      */
     private $serializer;
     /**
-     * @Route("/client")
+     * @Route("/")
      * @Template()
      */
     public function indexAction()
     {
         $user = $this->getUser();
         $token = "";
+        
         if($user){
-            $url = "http://lotto/tokens/123/currencies/USD.json";
+            $id = $user->getId();
+            $url = "http://lotto/tokens/{$id}/currencies/USD.json";
             $ch = curl_init($url);
             $this->serializer = $this->get("jms_serializer");
             $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
@@ -40,7 +42,11 @@ class DefaultController extends Controller
             $response = json_decode($responseRaw);
             $token = $response->data->token;
         }
-        //$token = $this->getToken();
-        return array('token' => $token);
+        
+        
+        return array(
+            'token' => $token,
+            'user'  => $user,
+        );
     }
 }

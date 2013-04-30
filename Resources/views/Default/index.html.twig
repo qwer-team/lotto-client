@@ -18,10 +18,14 @@
 <body>
     
 	<div id="header">
-            {{ token }}
+            {%if user %}
+                user: {{ user.username}}  amount: {{user.amount}} <a href="/logout">разлогинка</a>
+            {% else %}
+                user: anonimus <a href="/login">залогинка</a>
+            {% endif %}
 		<!--<img src="{#{ asset( "bundles/qwerlottofrontend/images/header.png") }#}" alt="">-->
 	</div>
-<iframe style="width: 100%; height: 100%; border: none;"src="http://lotto/hello/lotto/bundle{% if token != ''%}?token={{token}}{% endif %}"></iframe>
+<iframe style="width: 100%; height: 100%; border: none;"src="http://lotto?token={% if token != ''%}{{token}}{% endif %}"></iframe>
 </body>
 </html>
 
