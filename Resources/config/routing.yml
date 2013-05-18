@@ -10,4 +10,3 @@ ClientBundle_currency_lala:
     resource: "@ClientBundle/Controller/"
     type:     annotation
     prefix:   /
-
