@@ -6,7 +6,7 @@
                 </script>
     <meta charset="UTF-8">
 	<title>Document</title>
-                <link rel="stylesheet" href="http://demo6.qwer.com.ua/bundles/qwerlottofrontend/css/jquery-ui-1.10.2.custom.css" media="all">
+                <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/jquery-ui-1.10.2.custom.css" media="all">
         <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/imageflow.packed.css">
         <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/jquery.selectbox.css" media="all">
         <link rel="stylesheet" href="http://lotto/bundles/qwerlottofrontend/css/style.css" media="all">
@@ -25,11 +25,12 @@
                 user: {{ user.username}}  amount: {{user.amount}} <a href="/logout">разлогинка</a>
             {% else %}
                 user: anonimus <a href="/login">залогинка</a>
-            {% endif %}
-                
+            {% endif %}<br>
+                <a href="http://client.my/?lang=en">en</a>/<a href="http://client.my/?lang=ru">ru</a>
 		<!--<img src="{#{ asset( "bundles/qwerlottofrontend/images/header.png") }#}" alt="">-->
 	</div>
-<iframe style="width: 100%; height: 100%; border: none;"src="http://lotto?token={% if token != ''%}{{token}}{% endif %}"></iframe>
+    
+<iframe style="width: 100%; height: 100%; border: none;"src="http://lotto/{%if app.request.get('lang') != ''%}{{app.request.get('lang')}}{%else%}ru{%endif%}?token={% if token != ''%}{{token}}{% endif %}"></iframe>
 </body>
 </html>
 
