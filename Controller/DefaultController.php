@@ -11,11 +11,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  */
 class DefaultController extends Controller
 {
+
     /**
      *
      * @var \JMS\Serializer\Serializer
      */
     private $serializer;
+
     /**
      * @Route("/")
      * @Template()
@@ -24,10 +26,11 @@ class DefaultController extends Controller
     {
         $user = $this->getUser();
         $token = "";
-        
-        if($user){
+
+        if ($user) {
             $id = $user->getId();
-            $url = "http://lotto/tokens/{$id}/currencies/USD.json";
+            $rawUrl = $this->container->getParameter('client_lotto.currencies.url');
+            $url = str_replace("{externalId}", $id, $rawUrl);
             $ch = curl_init($url);
             $this->serializer = $this->get("jms_serializer");
             $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
@@ -42,11 +45,12 @@ class DefaultController extends Controller
             $response = json_decode($responseRaw);
             $token = $response->data->token;
         }
-        
-        
+
+
         return array(
             'token' => $token,
-            'user'  => $user,
+            'user' => $user,
         );
     }
+
 }

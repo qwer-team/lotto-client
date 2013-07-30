@@ -4,17 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
+    
     <parameters>
-        <parameter key="qwer_client.example.class">Qwer\LottoClientBundle\Example</parameter>
+        <parameter key="client_lotto.currencies.url">http://lotto/tokens/{externalId}/currencies/USD.json</parameter>
     </parameters>
 
-    <services>
-        <service id="qwer_client.example" class="%qwer_client.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
+    
+    
 </container>
