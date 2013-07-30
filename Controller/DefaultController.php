@@ -27,6 +27,7 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $token = "";
         $lottoUrl = $this->container->getParameter('lotto.url');
+        $clientLottoUrl = $this->container->getParameter('client.lotto.url');
         if ($user) {
             $id = $user->getId();
             $rawUrl = $this->container->getParameter('client_lotto.currencies.url');
@@ -51,6 +52,7 @@ class DefaultController extends Controller
             'token' => $token,
             'user' => $user,
             'lottoUrl' => $lottoUrl,
+            'clientLottoUrl' => $clientLottoUrl,
         );
     }
 

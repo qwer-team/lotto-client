@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="lotto.url">http://lotto/</parameter>
+        <parameter key="client.lotto.url">http://client.my/</parameter>
         <parameter key="client_lotto.currencies.url">%lotto.url%tokens/{externalId}/currencies/{currency}.json</parameter>
     </parameters>
 </container>
