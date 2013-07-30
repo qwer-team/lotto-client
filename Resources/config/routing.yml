@@ -1,12 +1,12 @@
 client_client:
-    resource: "@ClientBundle/Resources/config/routing/client.xml"
+    resource: "@QwerLottoClientBundle/Resources/config/routing/client.xml"
     prefix:   /clien
 
-ClientBundle_currency:
-    resource: "@ClientBundle/Resources/config/routing/currency.xml"
+QwerLottoClientBundle_currency:
+    resource: "@QwerLottoClientBundle/Resources/config/routing/currency.xml"
     prefix:   /currency
     
-ClientBundle_currency_lala:
-    resource: "@ClientBundle/Controller/"
+QwerLottoClientBundle_currency_lala:
+    resource: "@QwerLottoClientBundle/Controller/"
     type:     annotation
     prefix:   /

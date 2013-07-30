@@ -26,11 +26,11 @@ class DefaultController extends Controller
     {
         $user = $this->getUser();
         $token = "";
-
+        $lottoUrl = $this->container->getParameter('lotto.url');
         if ($user) {
             $id = $user->getId();
             $rawUrl = $this->container->getParameter('client_lotto.currencies.url');
-            $url = str_replace("{externalId}", $id, $rawUrl);
+            $url = str_replace(array("{externalId}","{currency}"), array($id, "USD"), $rawUrl);
             $ch = curl_init($url);
             $this->serializer = $this->get("jms_serializer");
             $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
@@ -50,6 +50,7 @@ class DefaultController extends Controller
         return array(
             'token' => $token,
             'user' => $user,
+            'lottoUrl' => $lottoUrl,
         );
     }
 
