@@ -24,5 +24,10 @@ class QwerLottoClientExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+        if ($container->getParameter('kernel.environment') == "prod") {
+            $loader->load('services_prod.xml');
+        } else {
+            $loader->load('services.xml');
+        }
     }
 }
