@@ -22,9 +22,9 @@ class ClientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('LottoClientBundle:Client')->findAll();
+        $entities = $em->getRepository('QwerLottoClientBundle:Client')->findAll();
 
-        return $this->render('LottoClientBundle:Client:index.html.twig', array(
+        return $this->render('QwerLottoClientBundle:Client:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -47,7 +47,7 @@ class ClientController extends Controller
             return $this->redirect($this->generateUrl('client_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('LottoClientBundle:Client:new.html.twig', array(
+        return $this->render('QwerLottoClientBundle:Client:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -62,7 +62,7 @@ class ClientController extends Controller
         $entity = new Client();
         $form   = $this->createForm(new ClientType(), $entity);
 
-        return $this->render('LottoClientBundle:Client:new.html.twig', array(
+        return $this->render('QwerLottoClientBundle:Client:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -76,7 +76,7 @@ class ClientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('LottoClientBundle:Client')->find($id);
+        $entity = $em->getRepository('QwerLottoClientBundle:Client')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Client entity.');
@@ -84,7 +84,7 @@ class ClientController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('LottoClientBundle:Client:show.html.twig', array(
+        return $this->render('QwerLottoClientBundle:Client:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -97,7 +97,7 @@ class ClientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('LottoClientBundle:Client')->find($id);
+        $entity = $em->getRepository('QwerLottoClientBundle:Client')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Client entity.');
@@ -106,7 +106,7 @@ class ClientController extends Controller
         $editForm = $this->createForm(new ClientType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('LottoClientBundle:Client:edit.html.twig', array(
+        return $this->render('QwerLottoClientBundle:Client:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -121,7 +121,7 @@ class ClientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('LottoClientBundle:Client')->find($id);
+        $entity = $em->getRepository('QwerLottoClientBundle:Client')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Client entity.');
@@ -138,7 +138,7 @@ class ClientController extends Controller
             return $this->redirect($this->generateUrl('client_edit', array('id' => $id)));
         }
 
-        return $this->render('LottoClientBundle:Client:edit.html.twig', array(
+        return $this->render('QwerLottoClientBundle:Client:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -156,7 +156,7 @@ class ClientController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('LottoClientBundle:Client')->find($id);
+            $entity = $em->getRepository('QwerLottoClientBundle:Client')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Client entity.');
