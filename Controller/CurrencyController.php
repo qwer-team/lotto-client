@@ -22,9 +22,9 @@ class CurrencyController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ClientBundle:Currency')->findAll();
+        $entities = $em->getRepository('LottoClientBundle:Currency')->findAll();
 
-        return $this->render('ClientBundle:Currency:index.html.twig', array(
+        return $this->render('LottoClientBundle:Currency:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -47,7 +47,7 @@ class CurrencyController extends Controller
             return $this->redirect($this->generateUrl('currency_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('ClientBundle:Currency:new.html.twig', array(
+        return $this->render('LottoClientBundle:Currency:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -62,7 +62,7 @@ class CurrencyController extends Controller
         $entity = new Currency();
         $form   = $this->createForm(new CurrencyType(), $entity);
 
-        return $this->render('ClientBundle:Currency:new.html.twig', array(
+        return $this->render('LottoClientBundle:Currency:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -76,7 +76,7 @@ class CurrencyController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ClientBundle:Currency')->find($id);
+        $entity = $em->getRepository('LottoClientBundle:Currency')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Currency entity.');
@@ -84,7 +84,7 @@ class CurrencyController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ClientBundle:Currency:show.html.twig', array(
+        return $this->render('LottoClientBundle:Currency:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -97,7 +97,7 @@ class CurrencyController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ClientBundle:Currency')->find($id);
+        $entity = $em->getRepository('LottoClientBundle:Currency')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Currency entity.');
@@ -106,7 +106,7 @@ class CurrencyController extends Controller
         $editForm = $this->createForm(new CurrencyType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ClientBundle:Currency:edit.html.twig', array(
+        return $this->render('LottoClientBundle:Currency:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -121,7 +121,7 @@ class CurrencyController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ClientBundle:Currency')->find($id);
+        $entity = $em->getRepository('LottoClientBundle:Currency')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Currency entity.');
@@ -138,7 +138,7 @@ class CurrencyController extends Controller
             return $this->redirect($this->generateUrl('currency_edit', array('id' => $id)));
         }
 
-        return $this->render('ClientBundle:Currency:edit.html.twig', array(
+        return $this->render('LottoClientBundle:Currency:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -156,7 +156,7 @@ class CurrencyController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ClientBundle:Currency')->find($id);
+            $entity = $em->getRepository('LottoClientBundle:Currency')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Currency entity.');

@@ -51,7 +51,7 @@ class NotificationsController extends Controller
      */
     private function getUserById($id){
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository("ClientBundle:Client");
+        $repo = $em->getRepository("LottoClientBundle:Client");
         $user = $repo->find($id);
         return $user;
     }
