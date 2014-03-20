@@ -26,11 +26,11 @@
             {% else %}
                 user: anonimus <a href="/login">залогинка</a>
             {% endif %}<br>
-                <a href="http://demo5.qwer.com.ua/?lang=en">en</a>/<a href="http://demo5.qwer.com.ua/?lang=ru">ru</a>
+                <a href="/lang=en">en</a>/<a href="/lang=ru">ru</a>
 		<!--<img src="{#{ asset( "bundles/qwerlottofrontend/images/header.png") }#}" alt="">-->
 	</div>
     
-<iframe style="width: 100%; height: 1215px; border: none;"src="http://demo6.qwer.com.ua/{%if app.request.get('lang') != ''%}{{app.request.get('lang')}}{%else%}ru{%endif%}?token={% if token != ''%}{{token}}{% endif %}"></iframe>
+<iframe style="width: 100%; height: 1215px; border: none;"src="http://lotoserv.my/app_dev.php/{%if app.request.get('lang') != ''%}{{app.request.get('lang')}}{%else%}ru{%endif%}?token={% if token != ''%}{{token}}{% endif %}"></iframe>
 </body>
 </html>
 

@@ -27,11 +27,17 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $token = "";
         $lottoUrl = $this->container->getParameter('lotto.url');
+       // print( $lottoUrl."\n");
         $clientLottoUrl = $this->container->getParameter('client.lotto.url');
+        //
+        
         if ($user) {
             $id = $user->getId();
             $rawUrl = $this->container->getParameter('client_lotto.currencies.url');
+         //   print( $rawUrl."<br/>"); // /tokens/1/currencies/USD.json
             $url = str_replace(array("{externalId}","{currency}"), array($id, "USD"), $rawUrl);
+            //print($url);
+          //  print($url);
             $ch = curl_init($url);
             $this->serializer = $this->get("jms_serializer");
             $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
@@ -39,11 +45,18 @@ class DefaultController extends Controller
             $info->setPassword("123");
             $data = $this->serializer->serialize($info, "json");
             $request["data"] = $data;
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+         //    print_r($request);
+           // curl_setopt($ch, CURLOPT_HEADER, 0);
+            
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, 'data={"login":"vassa","password":"123"}');
             $responseRaw = curl_exec($ch);
+            
+       //     echo  $responseRaw ;
+            curl_close($ch);
             $response = json_decode($responseRaw);
+            //  print_r($response);
             $token = $response->data->token;
         }
 
