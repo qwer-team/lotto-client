@@ -24,7 +24,10 @@ class Client extends FosUser
      */
     protected $currency;
 
-
+    /**
+     * @var string
+     */
+    protected $msg;
     /**
      * Get id
      *
@@ -79,6 +82,30 @@ class Client extends FosUser
     public function getCurrency()
     {
         return $this->currency;
+    }
+    
+    
+    /**
+     * Set msg
+     *
+     * @param string $msg
+     * @return Client
+     */
+    public function setMsg($msg)
+    {
+        $this->msg = $msg;
+    
+        return $this;
+    }
+
+    /**
+     * Get msg
+     *
+     * @return string 
+     */
+    public function getMsg()
+    {
+        return $this->msg;
     }
     
 }

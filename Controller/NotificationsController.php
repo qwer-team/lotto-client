@@ -21,6 +21,14 @@ class NotificationsController extends Controller
             $user = $this->getUserById($id);
             $newAmount = $user->getAmount() + $bet->summa2;
             $user->setAmount($newAmount);
+            $newMsg= $user->getMsg()." \n ";
+            if($bet->summa2>0) {
+                $newMsg= $newMsg."  Win id=". $bet->id."  sum=". $bet->summa2;
+            } else {
+                $newMsg= $newMsg."  Lose id=". $bet->id."  sum=". $bet->summa1;
+                
+            }
+            $user->setMsg($newMsg);
         }
         
         $em = $this->getDoctrine()->getManager();
@@ -63,11 +71,15 @@ class NotificationsController extends Controller
     public function betsAction(Request $request)
     {
         $data = json_decode($request->get('data'));
+ 
         foreach($data->bets as $bet){
             $id = $bet->externalId;
             $user = $this->getUserById($id);
             $newAmount = $user->getAmount() - $bet->summa1;
             $user->setAmount($newAmount);
+            $newMsg= $user->getMsg()." \n ";
+            $newMsg= $newMsg."  Bet id=". $bet->id."  sum=". $bet->summa1;
+            $user->setMsg($newMsg);
         }
         
         $em = $this->getDoctrine()->getManager();
