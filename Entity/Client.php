@@ -25,7 +25,7 @@ class Client extends FosUser
     protected $currency;
 
     /**
-     * @var string
+     * @var text
      */
     protected $msg;
     /**
