@@ -37,9 +37,6 @@ class DefaultController extends Controller
          //   print( $rawUrl."<br/>"); // /tokens/1/currencies/USD.json
             $url = str_replace(array("{externalId}","{currency}"), array($id, "USD"), $rawUrl);
 
-
-          //  print($url);
-
          //  print($url);
 
             $ch = curl_init($url);
@@ -59,9 +56,6 @@ class DefaultController extends Controller
             
 
        //     echo  $responseRaw ;
-
-
-
             curl_close($ch);
             $response = json_decode($responseRaw);
             //  print_r($response);
