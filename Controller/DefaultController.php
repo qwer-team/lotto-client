@@ -36,8 +36,12 @@ class DefaultController extends Controller
             $rawUrl = $this->container->getParameter('client_lotto.currencies.url');
          //   print( $rawUrl."<br/>"); // /tokens/1/currencies/USD.json
             $url = str_replace(array("{externalId}","{currency}"), array($id, "USD"), $rawUrl);
-            //print($url);
+
+
           //  print($url);
+
+         //  print($url);
+
             $ch = curl_init($url);
             $this->serializer = $this->get("jms_serializer");
             $info = new \Qwer\LottoClientBundle\Entity\AuthenticationInfo();
@@ -53,7 +57,11 @@ class DefaultController extends Controller
             curl_setopt($ch, CURLOPT_POSTFIELDS, 'data={"login":"vassa","password":"123"}');
             $responseRaw = curl_exec($ch);
             
+
        //     echo  $responseRaw ;
+
+
+
             curl_close($ch);
             $response = json_decode($responseRaw);
             //  print_r($response);

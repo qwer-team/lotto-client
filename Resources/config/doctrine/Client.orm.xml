@@ -5,6 +5,7 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="amount" type="decimal" column="amount" precision="6" scale="4" nullable="true"/>
+    <field name="msg" type="text" column="msg"   nullable="true"/>
     <many-to-one target-entity="Currency" field="currency">
         <join-column name="currency_id" nullable="true"/>
     </many-to-one>

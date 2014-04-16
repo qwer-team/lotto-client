@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="currency" pattern="/">
-        <default key="_controller">ClientBundle:Currency:index</default>
+        <default key="_controller">QwerLottoClientBundle:Currency:index</default>
     </route>
 
     <route id="currency_show" pattern="/{id}/show">
