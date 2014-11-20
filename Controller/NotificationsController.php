@@ -21,7 +21,7 @@ class NotificationsController extends Controller
             $user = $this->getUserById($id);
             $newAmount = $user->getAmount() + $bet->summa2;
             $user->setAmount($newAmount);
-            $newMsg= $user->getMsg()." \n ";
+            $newMsg= $user->getMsg()." \n " ;
             if($bet->summa2>0) {
                 $newMsg= $newMsg."  Win id=". $bet->id."  sum=". $bet->summa2;
             } else {
@@ -72,13 +72,25 @@ class NotificationsController extends Controller
     {
         $data = json_decode($request->get('data'));
  
+        
+        /*
+ $arr["bet_type"] = $bet->getBetType()->getName();
+$arr["draw_id"] = $bet->getLottoDraw()->getId();
+$arr["draw_dt"] = $bet->getLottoDraw()->getDate();
+$arr["country_code"] = $bet->getLottoDraw()->getLottoTime()->getLottoType()->getCountry()->getCode();
+$arr["lotto_name"] = $bet->getLottoDraw()->getLottoTime()->getLottoType()->getTitle();
+$arr["stake_str"] = implode(",", $bet->getBalls());
+$arr["is_bonus_include"] = $bet->getWithBonus();
+         *          */
         foreach($data->bets as $bet){
             $id = $bet->externalId;
             $user = $this->getUserById($id);
             $newAmount = $user->getAmount() - $bet->summa1;
             $user->setAmount($newAmount);
             $newMsg= $user->getMsg()." \n ";
-            $newMsg= $newMsg."  Bet id=". $bet->id."  sum=". $bet->summa1;
+            $newMsg= $newMsg."  Bet id=". $bet->id.", sum=". $bet->summa1." "
+                    . " bet_type=". $bet->bet_type.", draw_dt=". $bet->draw_dt.", "
+                    . " lotto_name=". $bet->lotto_name. ", stake_str=". $bet->stake_str    ;
             $user->setMsg($newMsg);
         }
         

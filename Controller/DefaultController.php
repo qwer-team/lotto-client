@@ -25,13 +25,14 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $user = $this->getUser();
-        $token = "";
+        $token = "ipp1pmp3n1nc6p5kr0rma46h91";
+       // $token = "";
         $lottoUrl = $this->container->getParameter('lotto.url');
        // print( $lottoUrl."\n");
         $clientLottoUrl = $this->container->getParameter('client.lotto.url');
         //
         
-        if ($user) {
+      /*   if ($user) {
             $id = $user->getId();
             $rawUrl = $this->container->getParameter('client_lotto.currencies.url');
          //   print( $rawUrl."<br/>"); // /tokens/1/currencies/USD.json
@@ -58,10 +59,10 @@ class DefaultController extends Controller
        //     echo  $responseRaw ;
             curl_close($ch);
             $response = json_decode($responseRaw);
-            //  print_r($response);
-            $token = $response->data->token;
+            //  print_r($response); 
+            $token =  $response->data->token;
         }
-
+*/
 
         return array(
             'token' => $token,
